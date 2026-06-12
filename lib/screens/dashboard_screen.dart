@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:student_management_app/screens/students_list_screen.dart';
-import 'package:student_management_app/screens/add_student_screen.dart';
+import 'student_list_screen.dart';
+import 'add_student_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -8,36 +8,25 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Admin Dashboard'),
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
+      appBar: AppBar(title: const Text("Dashboard")),
+      body: Center(
         child: Column(
-          verticalDirection: VerticalDirection.down,
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ElevatedButton.icon(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const StudentsListScreen()),
-              ),
-              icon: const Icon(Icons.badge_rounded),
-              label: const Text('View Enrolled Students'),
-              style: ElevatedButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 20)),
+            ElevatedButton(
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const StudentListScreen())
+                ),
+                child: const Text("View List")
             ),
             const SizedBox(height: 20),
-            ElevatedButton.icon(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const AddStudentScreen()),
-              ),
-              icon: const Icon(Icons.person_add_alt_1_rounded),
-              label: const Text('Register New Student'),
-              style: ElevatedButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 20)),
+            ElevatedButton(
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => AddStudentScreen())
+                ),
+                child: const Text("Add Student")
             ),
           ],
         ),
